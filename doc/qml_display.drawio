@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="28.0.7">
+  <diagram name="display_sketch" id="MffaKH4aCSd3M-E-CYFU">
+    <mxGraphModel dx="1368" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3uyDhm852BFjm8ysMibl-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" edge="1" parent="1" source="3uyDhm852BFjm8ysMibl-1" target="3uyDhm852BFjm8ysMibl-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-1" value="Temperature Sensor" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="150" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" edge="1" parent="1" source="3uyDhm852BFjm8ysMibl-2" target="3uyDhm852BFjm8ysMibl-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-2" value="Humidity Sensor" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="150" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-4" value="\(10^\circ C\vert^{50^\circ F}\)&lt;div&gt;\(\scriptscriptstyle Humidity: 89\%\)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=40;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="350" y="200" width="320" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" edge="1" parent="1" source="3uyDhm852BFjm8ysMibl-7" target="3uyDhm852BFjm8ysMibl-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3uyDhm852BFjm8ysMibl-7" value="Disk" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=light-dark(#000000,#383838);strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="468.75" y="450" width="82.5" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
