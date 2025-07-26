@@ -9,7 +9,7 @@ A Qt QML temperature and humidity display. The display shows the temperature in 
 *Fig. 1- Display showing temperature and humidity.*
 
 ## System Specification
-The system must emulate three sensors: the first is the temperature sensor in celsius, the sencond is the humidity sensor, and the third is the temperature sensor in fahrenheit. The third sensor updates its value converting the value read by the first sensor, thus whenever the first sensor is updated the third sensor also updates.
+The system must emulate three sensors: the first is the temperature sensor in celsius, the second is the humidity sensor, and the third is the temperature sensor in fahrenheit. The third sensor updates its value converting the value read by the first sensor, thus whenever the first sensor is updated the third sensor also updates.
 
 The data returned by the first and second sensors should be random. The first sensor **MUST** update in **2 seconds** intervals and the second sensor **MUST** update in **5 seconds** intervals.
 
@@ -28,10 +28,10 @@ Second sensor data constraint:
 - float number with one decimal.
 
 Alarm trip conditions:
-- temperature over 40 degree celcius or bellow 10 degrees celsius;
+- temperature over 40 degree celsius or bellow 10 degrees celsius;
 - humidity over 87% or bellow 40%.
 
-The project **MUST** folow bellow requirements:
+The project **MUST** follow bellow requirements:
 - Qt QML for UI content;
 - Qt/C++ for logic;
 - Sensor emulated in separated threads;
@@ -44,14 +44,21 @@ UI Layer:
 - Qt QML: Holds the UI description and **MUST** not include application logic.
 
 Application Layer:
-- ***Core***: Loads the Qt QML description and manages all other components. It is also responsable for updating the UI content and UI state;
+- ***Core***: Loads the Qt QML description and manages all other components. It is also responsible for updating the UI content and UI state;
 - ***Temperature/Humidity Sensor***: Generate sensor data;
 - ***Alarm***: Notifies a fault condition to the system;
 - ***Storage handler***: Handles the data storage operations, e.g. connection, read, write, etc;
-- ***Cloud handler***: Handles the cloud service operations, e.g. conncetion, send data, etc;
+- ***Cloud handler***: Handles the cloud service operations, e.g. connection, send data, etc;
 - ***Storage***: The local storage implementation, e.g. database, text file, etc;
 - ***Cloud Service***: Cloud service, e.g. Google, Amazon, etc.
 
 ![System Overview](./doc/img/system_sketch.png)
 
 *Fig. 2- System overview depicting high level and low level components.*
+
+## System Design
+The `class ISensor` is the interface of all concrete sensors. It should provide a way to get data from PHY sensor in a timed interval.
+
+![Sensor interface and concrete classes](./doc/img/sensor_class.png)
+
+*Fig. 3- The `class ISensor` and its children.*
