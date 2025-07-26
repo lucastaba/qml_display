@@ -53,10 +53,55 @@
     </mxGraphModel>
   </diagram>
   <diagram id="TwtWHsmdJWrPmaD9rJ07" name="system_sketch">
-    <mxGraphModel dx="1368" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="1140" dy="661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="xJjRMf2vhMvaOUHp9173-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" edge="1" parent="1" source="xJjRMf2vhMvaOUHp9173-1" target="xJjRMf2vhMvaOUHp9173-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-1" value="Temperature Sensor" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" edge="1" parent="1" source="xJjRMf2vhMvaOUHp9173-2" target="xJjRMf2vhMvaOUHp9173-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-2" value="Humidity Sensor" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="120" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-3" value="Core" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="270" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-6" value="" style="line;strokeWidth=5;html=1;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="640" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" edge="1" parent="1" source="xJjRMf2vhMvaOUHp9173-7" target="xJjRMf2vhMvaOUHp9173-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-7" value="Qt QML" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="335" y="50" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" edge="1" parent="1" source="xJjRMf2vhMvaOUHp9173-9" target="xJjRMf2vhMvaOUHp9173-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-9" value="Storage handler" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="330" y="340" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" edge="1" parent="1" source="xJjRMf2vhMvaOUHp9173-10" target="xJjRMf2vhMvaOUHp9173-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-10" value="Cloud handler" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="470" y="340" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-11" value="Storage" style="shape=datastore;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="350" y="450" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xJjRMf2vhMvaOUHp9173-13" value="Cloud Service" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="460" y="430" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4-RaiHBL1VUBDglGa1RU-1" value="Alarm" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=5;strokeColor=light-dark(#000000,#383838);" vertex="1" parent="1">
+          <mxGeometry x="330" y="300" width="100" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
