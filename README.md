@@ -62,3 +62,17 @@ The `class ISensor` is the interface of all concrete sensors. It should provide 
 ![Sensor interface and concrete classes](./doc/img/sensor_class.png)
 
 *Fig. 3- The `class ISensor` and its children.*
+
+## Build Project
+Requirement:
+- Any C++ compiler with C++17 support.
+
+Build command using GCC:
+```
+g++ -Wall -Wextra -O2 -std=c++17 -o display app/Src/main.cpp app/Src/GaussianRNG.cpp app/Src/ISensor.cpp app/Src/TemperatureSensor.cpp app/Src/HumiditySensor.cpp
+```
+
+Run command:
+```
+./display
+```
