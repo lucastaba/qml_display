@@ -14,18 +14,27 @@
  *   limitations under the License.
 */
 
-#pragma once
+#include "../Inc/Subject.h"
 
-#include "Sensor.h"
-#include "Subject.h"
+Subject::Subject() {
 
-class TemperatureSensor: public Sensor {
-public:
-    TemperatureSensor(int interval = 2);
-    float GetData(void) override;
-    ~TemperatureSensor() = default;
-private:
-    const float m_mean = 25.0f;
-    const float m_minValue = -40.0f;
-    const float m_maxValue = 150.0f;
-};
+}
+
+void Subject::Attach(IObserver* observer) {
+    m_observers.push_back(observer);
+}
+
+void Subject::Detach(IObserver* observer) {
+    for (auto it = m_observers.cbegin(); it != m_observers.cend(); ++it) {
+        if (*it == observer) {
+            m_observers.erase(it);
+            break;
+        }
+    }
+}
+
+void Subject::Notify() {
+    for (auto it = m_observers.cbegin(); it != m_observers.cend(); ++it) {
+        (*it)->Update(this);
+    }
+}

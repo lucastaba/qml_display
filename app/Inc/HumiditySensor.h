@@ -16,7 +16,8 @@
 
 #pragma once
 
-#include "./Sensor.h"
+#include "Sensor.h"
+#include "Subject.h"
 
 class HumiditySensor: public Sensor {
 public:

@@ -16,16 +16,22 @@
 
 #pragma once
 
-#include "Sensor.h"
-#include "Subject.h"
+#include <unordered_map>
 
-class TemperatureSensor: public Sensor {
+#include "IObserver.h"
+#include "ISubject.h"
+
+typedef enum {
+    SENSOR_TEMPERATURE,
+    SENSOR_HUMIDITY,
+} SubjectType;
+
+class Controller: public IObserver {
 public:
-    TemperatureSensor(int interval = 2);
-    float GetData(void) override;
-    ~TemperatureSensor() = default;
+    Controller();
+    void Subscribe(ISubject* subject, SubjectType type);
+    void Update(ISubject* subject) override;
+    ~Controller() = default;
 private:
-    const float m_mean = 25.0f;
-    const float m_minValue = -40.0f;
-    const float m_maxValue = 150.0f;
+    std::unordered_map<ISubject*, SubjectType> m_subjects;
 };

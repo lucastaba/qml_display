@@ -69,7 +69,7 @@ Requirement:
 
 Build command using GCC:
 ```
-g++ -Wall -Wextra -O2 -std=c++17 -o display app/Src/main.cpp app/Src/GaussianRNG.cpp app/Src/ISensor.cpp app/Src/TemperatureSensor.cpp app/Src/HumiditySensor.cpp
+g++ -Wall -Wextra -O2 -std=c++17 -o display app/Src/main.cpp app/Src/GaussianRNG.cpp app/Src/Sensor.cpp app/Src/TemperatureSensor.cpp app/Src/HumiditySensor.cpp app/Src/Subject.cpp app/Src/Controller.cpp
 ```
 
 Run command:

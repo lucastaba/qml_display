@@ -16,16 +16,10 @@
 
 #pragma once
 
-#include "Sensor.h"
-#include "Subject.h"
+class ISubject;
 
-class TemperatureSensor: public Sensor {
+class IObserver {
 public:
-    TemperatureSensor(int interval = 2);
-    float GetData(void) override;
-    ~TemperatureSensor() = default;
-private:
-    const float m_mean = 25.0f;
-    const float m_minValue = -40.0f;
-    const float m_maxValue = 150.0f;
+    virtual void Update(ISubject* subject) = 0;
+    virtual ~IObserver() = default;
 };

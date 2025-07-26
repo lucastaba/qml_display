@@ -36,11 +36,15 @@ float Sensor::GetData(void) {
     return 0.0;
 }
 
+float Sensor::ReadData(void) const {
+    return m_data;
+}
+
 void Sensor::RunService(void) {
     m_thread = std::make_unique<std::thread>([&]{
         for (;;) {
             m_data = GetData();
-            std::cout << "Sensor data: " << m_data << "\n";
+            Notify();
             std::this_thread::sleep_for(std::chrono::seconds(m_interval));
         }
     });

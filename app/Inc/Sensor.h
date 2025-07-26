@@ -17,12 +17,14 @@
 #pragma once
 
 #include "ISensor.h"
+#include "Subject.h"
 
-class Sensor: ISensor {
+class Sensor: public ISensor, public Subject {
 public:
     Sensor(int interval = 10);
     virtual void SetInterval(int interval) override;
     virtual float GetData(void) override;
+    virtual float ReadData(void) const;
     virtual void RunService(void) override;
     virtual ~Sensor() = default;
 private:
