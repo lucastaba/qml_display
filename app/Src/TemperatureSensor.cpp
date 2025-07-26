@@ -19,8 +19,8 @@
 #include "../Inc/TemperatureSensor.h"
 #include "../Inc/GaussianRNG.h"
 
-TemperatureSensor::TemperatureSensor(int interval) {
-    SetInterval(interval);
+TemperatureSensor::TemperatureSensor(int interval):
+    Sensor::Sensor(interval) {
 }
 
 float TemperatureSensor::GetData() {

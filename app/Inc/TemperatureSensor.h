@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include "ISensor.h"
+#include "Sensor.h"
 
-class TemperatureSensor: public ISensor {
+class TemperatureSensor: public Sensor {
 public:
-    TemperatureSensor(int interval);
+    TemperatureSensor(int interval = 2);
     float GetData(void) override;
     ~TemperatureSensor() = default;
 private:

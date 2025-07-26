@@ -16,6 +16,7 @@
 
 #include "../Inc/TemperatureSensor.h"
 #include "../Inc/HumiditySensor.h"
+// #include "../Inc/Controller.h"
 
 int main(int argc, char* argv[]) {
     (void)argc;
@@ -23,6 +24,7 @@ int main(int argc, char* argv[]) {
     
     TemperatureSensor tSensor{2};
     HumiditySensor hSensor{5};
+    // Controller controller{};
 
     tSensor.RunService();
     hSensor.RunService();

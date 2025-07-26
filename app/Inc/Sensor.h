@@ -16,15 +16,17 @@
 
 #pragma once
 
-#include "./Sensor.h"
+#include "ISensor.h"
 
-class HumiditySensor: public Sensor {
+class Sensor: ISensor {
 public:
-    HumiditySensor(int interval = 5);
-    float GetData(void) override;
-    ~HumiditySensor() = default;
+    Sensor(int interval = 10);
+    virtual void SetInterval(int interval) override;
+    virtual float GetData(void) override;
+    virtual void RunService(void) override;
+    virtual ~Sensor() = default;
 private:
-    const float m_mean = 60.0f;
-    const float m_minValue = 0.0f;
-    const float m_maxValue = 100.0f;
+    int m_interval;
+    float m_data;
+    std::unique_ptr<std::thread> m_thread;
 };

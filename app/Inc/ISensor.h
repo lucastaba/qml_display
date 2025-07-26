@@ -21,12 +21,8 @@
 
 class ISensor {
 public:
-    virtual void SetInterval(int interval);
+    virtual void SetInterval(int interval) = 0;
     virtual float GetData(void) = 0;
-    virtual void RunService(void);
+    virtual void RunService(void) = 0;
     virtual ~ISensor() = default;
-private:
-    int t_interval;
-    float t_data;
-    std::unique_ptr<std::thread> t_thread;
 };

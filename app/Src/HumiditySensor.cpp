@@ -19,8 +19,8 @@
 #include "../Inc/HumiditySensor.h"
 #include "../Inc/GaussianRNG.h"
 
-HumiditySensor::HumiditySensor(int interval) {
-    SetInterval(interval);
+HumiditySensor::HumiditySensor(int interval):
+    Sensor::Sensor(interval) {
 }
 
 float HumiditySensor::GetData() {

@@ -19,19 +19,30 @@
 #include <thread>
 #include <iostream>
 
-#include "../Inc/ISensor.h"
+#include "../Inc/Sensor.h"
 
-void ISensor::SetInterval(int interval) {
-    t_interval = interval;
+Sensor::Sensor(int interval):
+    m_interval(interval),
+    m_data(0.0f),
+    m_thread(nullptr) {
+
 }
 
-void ISensor::RunService(void) {
-    t_thread = std::make_unique<std::thread>([&]{
+void Sensor::SetInterval(int interval) {
+    m_interval = interval;
+}
+
+float Sensor::GetData(void) {
+    return 0.0;
+}
+
+void Sensor::RunService(void) {
+    m_thread = std::make_unique<std::thread>([&]{
         for (;;) {
-            t_data = GetData();
-            std::cout << "Data: " << t_data << "\n";
-            std::this_thread::sleep_for(std::chrono::seconds(t_interval));
+            m_data = GetData();
+            std::cout << "Sensor data: " << m_data << "\n";
+            std::this_thread::sleep_for(std::chrono::seconds(m_interval));
         }
     });
-    t_thread->detach();
+    m_thread->detach();
 }
