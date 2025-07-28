@@ -66,9 +66,15 @@ The `class ISensor` is the interface of all concrete sensors. It should provide 
 ## Build Project
 Requirement:
 - Any C++ compiler with C++17 support.
+- cmake
 
 Build command using GCC:
 ```
+mkdir build
+export QT_VERSION=6.9.1
+~/Qt/${QT_VERSION}/gcc_64/bin/qt-cmake -G Ninja -S ./ -B ./build/
+cmake --build ./build/
+
 g++ -Wall -Wextra -O2 -std=c++17 -o display app/Src/main.cpp app/Src/GaussianRNG.cpp app/Src/Sensor.cpp app/Src/TemperatureSensor.cpp app/Src/HumiditySensor.cpp app/Src/Subject.cpp app/Src/Controller.cpp
 ```
 

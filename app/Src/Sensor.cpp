@@ -17,7 +17,6 @@
 #include <memory>
 #include <chrono>
 #include <thread>
-#include <iostream>
 
 #include "../Inc/Sensor.h"
 
