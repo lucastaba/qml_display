@@ -72,13 +72,11 @@ Build command using GCC:
 ```
 mkdir build
 export QT_VERSION=6.9.1
-~/Qt/${QT_VERSION}/gcc_64/bin/qt-cmake -G Ninja -S ./ -B ./build/
+cmake -DCMAKE_PREFIX_PATH=~/Qt/6.9.1/gcc_64 -S ./ -B ./build/
 cmake --build ./build/
-
-g++ -Wall -Wextra -O2 -std=c++17 -o display app/Src/main.cpp app/Src/GaussianRNG.cpp app/Src/Sensor.cpp app/Src/TemperatureSensor.cpp app/Src/HumiditySensor.cpp app/Src/Subject.cpp app/Src/Controller.cpp
 ```
 
 Run command:
 ```
-./display
+./build/app/Src/display
 ```

@@ -14,6 +14,9 @@
  *   limitations under the License.
 */
 
+#include <QtGui/QGuiApplication>
+#include <QtQml/QQmlApplicationEngine>
+
 #include "../Inc/TemperatureSensor.h"
 #include "../Inc/HumiditySensor.h"
 #include "../Inc/Controller.h"
@@ -22,6 +25,8 @@ int main(int argc, char* argv[]) {
     (void)argc;
     (void)argv;
     
+    QGuiApplication app(argc, argv);
+    QQmlApplicationEngine engine;
     TemperatureSensor tSensor{2};
     HumiditySensor hSensor{5};
     Controller controller{};
@@ -31,6 +36,13 @@ int main(int argc, char* argv[]) {
     tSensor.RunService();
     hSensor.RunService();
 
-    while (1){}
-    return 0;
+    QObject::connect(
+        &engine,
+        &QQmlApplicationEngine::objectCreationFailed,
+        &app,
+        []() { QCoreApplication::exit(-1); },
+        Qt::QueuedConnection);
+    engine.loadFromModule("qml_display", "Main");
+
+    return app.exec();
 }
