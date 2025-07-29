@@ -78,5 +78,5 @@ cmake --build ./build/
 
 Run command:
 ```
-./build/app/Src/display
+./build/appqml_display
 ```

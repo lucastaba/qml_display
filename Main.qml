@@ -5,8 +5,6 @@ Item {
     width: 640
     height: 480
     visible: true
-    // title: qsTr("Nice Display")
-    // color: "blue"
 
     Rectangle {
         anchors.fill: parent
@@ -24,13 +22,8 @@ Item {
                     Layout.fillWidth: parent
 
                     Text {
-                        text: __tempSensorC.text
-                        color: "white"
-                    }
-
-                    Text {
-                        text: "\xB0C"
-                        color: "white"
+                        text: __tempSensorC.text + "\xB0C"
+                        color: __tempSensorC.color
                     }
                 }
 
@@ -38,13 +31,8 @@ Item {
                     Layout.fillWidth: parent
 
                     Text {
-                        text: __tempSensorF.text
-                        color: "white"
-                    }
-
-                    Text {
-                        text: "\xB0F"
-                        color: "white"
+                        text: __tempSensorF.text + "\xB0F"
+                        color: __tempSensorF.color
                     }
                 }
             }
@@ -54,22 +42,11 @@ Item {
                 Layout.alignment: Qt.AlignTop | Qt.AlignHCenter
 
                 Text {
-                    text: "Humidity: "
-                    color: "white"
+                    text: "Humidity: " + __humSensor.text + "%"
+                    color: __humSensor.color
                     font.italic: true
                 }
 
-                Text {
-                    text: __humSensor.text
-                    color: "white"
-                    font.italic: true
-                }
-
-                Text {
-                    text: "%"
-                    color: "white"
-                    font.italic: true
-                }
             }
 
         }

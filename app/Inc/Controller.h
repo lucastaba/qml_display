@@ -34,6 +34,8 @@ public:
     Controller();
     void Subscribe(ISubject* subject, SubjectType type);
     void SetupUI(QQmlContext* context);
+    void SetupTempAlarm(float coldTemp = 10.0f, float hotTemp= 40.0f);
+    void SetupHumAlarm(float lowHum = 40.0, float highHum = 87.0);
     void Update(ISubject* subject) override;
     ~Controller() = default;
 private:
@@ -46,4 +48,14 @@ private:
 
     QString m_Float2QString(float f);
     float m_Celsius2Fahrenheit(float f);
+
+    /* could be inside Alarm object */
+    float m_coldTemp;
+    float m_hotTemp;
+    float m_lowHum;
+    float m_highHum;
+
+    bool m_IsTempAbnormal(float temp);
+    bool m_IsHumidityAbonormal(float humidity);
+
 };

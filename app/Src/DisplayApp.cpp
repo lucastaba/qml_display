@@ -32,6 +32,8 @@ void DisplayApp::Setup(const QUrl& url) {
     m_controller.Subscribe(&m_tempSensor, SENSOR_TEMPERATURE);
     m_controller.Subscribe(&m_humSensor, SENSOR_HUMIDITY);
     m_controller.SetupUI(m_qtView->engine()->rootContext());
+    m_controller.SetupTempAlarm(m_coldTemp, m_hotTemp);
+    m_controller.SetupHumAlarm(m_lowHumdity, m_highHumdity);
     m_qtView->setSource(url);
 }
 

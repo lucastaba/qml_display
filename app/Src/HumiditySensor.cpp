@@ -25,6 +25,6 @@ HumiditySensor::HumiditySensor(int interval):
 
 float HumiditySensor::GetData() {
     /* A serial bus access to retrieve data. Here the GaussianRNG is emulating this behaviour. */
-    static GaussianRNG rng{m_mean, 2.0};
+    static GaussianRNG rng{m_mean, 10.0};
     return std::clamp(rng.GetRN(), m_minValue, m_maxValue);
 }

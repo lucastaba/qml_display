@@ -22,13 +22,20 @@
 class SensorTextObject: public QObject {
     Q_OBJECT
     Q_PROPERTY(QString text READ GetText NOTIFY TextChanged)
+    Q_PROPERTY(QString color READ GetColor NOTIFY ColorChanged)
 public:
-    SensorTextObject(const QString& s = QString());
+    SensorTextObject(const QString& text = QString(), const QString& color = QString("white"));
     QString GetText() const;
+    QString GetColor() const;
     void SetText(const QString& text);
+    void SetColor(const QString& color);
+    void SetColorFault();
+    void SetColorNormal();
     virtual ~SensorTextObject() = default;
 signals:
     void TextChanged();
+    void ColorChanged();
 private:
     QString m_text;
+    QString m_color;
 };

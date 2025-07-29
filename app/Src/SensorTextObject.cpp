@@ -16,12 +16,17 @@
 
 #include "SensorTextObject.h"
 
-SensorTextObject::SensorTextObject(const QString& s):
-    m_text(s) {
+SensorTextObject::SensorTextObject(const QString& text, const QString& color):
+    m_text(text),
+    m_color(color) {
 }
 
 QString SensorTextObject::GetText() const {
     return m_text;
+}
+
+QString SensorTextObject::GetColor() const {
+    return m_color;
 }
 
 void SensorTextObject::SetText(const QString& text) {
@@ -30,6 +35,22 @@ void SensorTextObject::SetText(const QString& text) {
     }
     m_text = text;
     emit TextChanged();
+}
+
+void SensorTextObject::SetColor(const QString& color) {
+    if (m_color == color) {
+        return;
+    }
+    m_color = color;
+    emit ColorChanged();
+}
+
+void SensorTextObject::SetColorFault() {
+    SetColor("red");
+}
+
+void SensorTextObject::SetColorNormal() {
+    SetColor("white");
 }
 
 #include "moc_SensorTextObject.cpp"

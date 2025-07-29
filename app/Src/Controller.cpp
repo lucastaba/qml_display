@@ -39,6 +39,16 @@ void Controller::SetupUI(QQmlContext* context) {
     context->setContextProperty("__humSensor", &m_humSensor);
 }
 
+void Controller::SetupTempAlarm(float coldTemp, float hotTemp) {
+    m_coldTemp = coldTemp;
+    m_hotTemp = hotTemp;
+}
+
+void Controller::SetupHumAlarm(float lowHum, float highHum) {
+    m_lowHum = lowHum;
+    m_highHum = highHum;
+}
+
 void Controller::Update(ISubject* subject) {
     float data;
     switch (m_subjects.at(subject)) {
@@ -46,10 +56,22 @@ void Controller::Update(ISubject* subject) {
             data = static_cast<TemperatureSensor*>(subject)->ReadData();
             m_tempSensorC.SetText(m_Float2QString(data));
             m_tempSensorF.SetText(m_Float2QString(m_Celsius2Fahrenheit(data)));
+            if (m_IsTempAbnormal(data)) {
+                m_tempSensorC.SetColorFault();
+                m_tempSensorF.SetColorFault();
+            } else {
+                m_tempSensorC.SetColorNormal();
+                m_tempSensorF.SetColorNormal();
+            }
             break;
         case SENSOR_HUMIDITY:
             data = static_cast<HumiditySensor*>(subject)->ReadData();
             m_humSensor.SetText(m_Float2QString(data));
+            if (m_IsHumidityAbonormal(data)) {
+                m_humSensor.SetColorFault();
+            } else {
+                m_humSensor.SetColorNormal();
+            }
         default:
             break;
     }
@@ -63,4 +85,11 @@ QString Controller::m_Float2QString(float f) {
 
 float Controller::m_Celsius2Fahrenheit(float f) {
     return (f*9/5)+32;
+}
+
+bool Controller::m_IsTempAbnormal(float temp) {
+    return (temp < m_coldTemp) || (temp > m_hotTemp);
+}
+bool Controller::m_IsHumidityAbonormal(float humidity) {
+    return (humidity < m_lowHum) || (humidity > m_highHum);
 }

@@ -35,4 +35,9 @@ private:
     Controller m_controller;
     QGuiApplication* m_qtApp;
     QQuickView* m_qtView;
+
+    const float m_coldTemp = 10.0f;
+    const float m_hotTemp = 40.0f;
+    const float m_lowHumdity = 40.0f;
+    const float m_highHumdity = 87.0f;
 };
