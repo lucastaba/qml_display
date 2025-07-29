@@ -34,6 +34,7 @@ void DisplayApp::Setup(const QUrl& url) {
     m_controller.SetupUI(m_qtView->engine()->rootContext());
     m_controller.SetupTempAlarm(m_coldTemp, m_hotTemp);
     m_controller.SetupHumAlarm(m_lowHumdity, m_highHumdity);
+    m_controller.SetDataBase(&m_db, m_dbPath);
     m_qtView->setSource(url);
 }
 

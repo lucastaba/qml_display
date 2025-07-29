@@ -17,12 +17,15 @@
 #pragma once
 
 #include <unordered_map>
+#include <string>
+#include <any>
 
 #include <QQmlContext>
 
 #include "IObserver.h"
 #include "ISubject.h"
 #include "SensorTextObject.h"
+#include "IDataBaseHandler.h"
 
 typedef enum {
     SENSOR_TEMPERATURE,
@@ -36,6 +39,7 @@ public:
     void SetupUI(QQmlContext* context);
     void SetupTempAlarm(float coldTemp = 10.0f, float hotTemp= 40.0f);
     void SetupHumAlarm(float lowHum = 40.0, float highHum = 87.0);
+    void SetDataBase(IDataBaseHandler* db, const std::string& path);
     void Update(ISubject* subject) override;
     ~Controller() = default;
 private:
@@ -58,4 +62,10 @@ private:
     bool m_IsTempAbnormal(float temp);
     bool m_IsHumidityAbonormal(float humidity);
 
+    /* data base */
+    IDataBaseHandler* m_db;
+
+    void m_DataBaseConnect(const std::string& path);
+    void m_DataBaseDisconnect();
+    void m_DataBaseInsert(const std::any& item);
 };

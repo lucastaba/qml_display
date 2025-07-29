@@ -24,7 +24,8 @@
 Controller::Controller():
     m_tempSensorC("0.0"),
     m_tempSensorF("0.0"),
-    m_humSensor("0.0") {
+    m_humSensor("0.0"),
+    m_db(nullptr) {
 
 }
 
@@ -47,6 +48,11 @@ void Controller::SetupTempAlarm(float coldTemp, float hotTemp) {
 void Controller::SetupHumAlarm(float lowHum, float highHum) {
     m_lowHum = lowHum;
     m_highHum = highHum;
+}
+
+void Controller::SetDataBase(IDataBaseHandler* db, const std::string& path) {
+    m_db = db;
+    m_DataBaseConnect(path);
 }
 
 void Controller::Update(ISubject* subject) {
@@ -92,4 +98,20 @@ bool Controller::m_IsTempAbnormal(float temp) {
 }
 bool Controller::m_IsHumidityAbonormal(float humidity) {
     return (humidity < m_lowHum) || (humidity > m_highHum);
+}
+
+void Controller::m_DataBaseConnect(const std::string& path) {
+    if (nullptr == m_db) {
+        return;
+    }
+}
+void Controller::m_DataBaseDisconnect() {
+    if (nullptr == m_db) {
+        return;
+    }
+}
+void Controller::m_DataBaseInsert(const std::any& item) {
+    if (nullptr == m_db) {
+        return;
+    }
 }

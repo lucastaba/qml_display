@@ -14,17 +14,17 @@
  *   limitations under the License.
 */
 
-#pragma once
+#include "IDataBaseHandler.h"
 
-#include "Sensor.h"
-
-class HumiditySensor: public Sensor {
+class NaiveDataBaseHandler: public IDataBaseHandler {
 public:
-    HumiditySensor(int interval = 5);
-    float GetData(void) override;
-    ~HumiditySensor() = default;
+    NaiveDataBaseHandler();
+    void Connect(std::string& path) override;
+    void Disconnect() override;
+    void InsertItem(const std::any& item) override;
+    template<class T>
+    void InsertNewItem(const T& newItem);
+    virtual ~NaiveDataBaseHandler() = default;
 private:
-    const float m_mean = 60.0f;
-    const float m_minValue = 0.0f;
-    const float m_maxValue = 100.0f;
+    std::string m_path;
 };

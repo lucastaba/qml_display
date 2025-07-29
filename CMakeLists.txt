@@ -20,6 +20,7 @@ qt_add_executable(appqml_display
     app/Src/SensorTextObject.cpp
     app/Src/GaussianRNG.cpp
     app/Src/DisplayApp.cpp
+    app/Src/NaiveDataBaseHandler.cpp
     main.cpp
 )
 

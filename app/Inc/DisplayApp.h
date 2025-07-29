@@ -22,6 +22,7 @@
 #include "TemperatureSensor.h"
 #include "Controller.h"
 #include "HumiditySensor.h"
+#include "NaiveDataBaseHandler.h"
 
 class DisplayApp {
 public:
@@ -33,6 +34,7 @@ private:
     TemperatureSensor m_tempSensor;
     HumiditySensor m_humSensor;
     Controller m_controller;
+    NaiveDataBaseHandler m_db;
     QGuiApplication* m_qtApp;
     QQuickView* m_qtView;
 
@@ -40,4 +42,5 @@ private:
     const float m_hotTemp = 40.0f;
     const float m_lowHumdity = 40.0f;
     const float m_highHumdity = 87.0f;
+    const std::string m_dbPath = "sensor_data.db";
 };
