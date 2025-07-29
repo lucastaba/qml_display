@@ -14,13 +14,17 @@
  *   limitations under the License.
 */
 
-#include <iostream>
+#include <sstream>
+#include <iomanip>
 
-#include "../Inc/Controller.h"
-#include "../Inc/TemperatureSensor.h"
-#include "../Inc/HumiditySensor.h"
+#include "Controller.h"
+#include "TemperatureSensor.h"
+#include "HumiditySensor.h"
 
-Controller::Controller() {
+Controller::Controller():
+    m_tempSensorC("0.0"),
+    m_tempSensorF("0.0"),
+    m_humSensor("0.0") {
 
 }
 
@@ -29,14 +33,34 @@ void Controller::Subscribe(ISubject* subject, SubjectType type) {
     m_subjects.insert({subject, type});
 }
 
+void Controller::SetupUI(QQmlContext* context) {
+    context->setContextProperty("__tempSensorC", &m_tempSensorC);
+    context->setContextProperty("__tempSensorF", &m_tempSensorF);
+    context->setContextProperty("__humSensor", &m_humSensor);
+}
+
 void Controller::Update(ISubject* subject) {
+    float data;
     switch (m_subjects.at(subject)) {
         case SENSOR_TEMPERATURE:
-            std::cout << "Subject TEMP: " << static_cast<TemperatureSensor*>(subject)->ReadData() << " C\n";
+            data = static_cast<TemperatureSensor*>(subject)->ReadData();
+            m_tempSensorC.SetText(m_Float2QString(data));
+            m_tempSensorF.SetText(m_Float2QString(m_Celsius2Fahrenheit(data)));
             break;
         case SENSOR_HUMIDITY:
-            std::cout << "Subject HUM: " << static_cast<HumiditySensor*>(subject)->ReadData() << " %\n";
+            data = static_cast<HumiditySensor*>(subject)->ReadData();
+            m_humSensor.SetText(m_Float2QString(data));
         default:
             break;
     }
+}
+
+QString Controller::m_Float2QString(float f) {
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(1) << f;
+    return QString(ss.str().c_str());
+}
+
+float Controller::m_Celsius2Fahrenheit(float f) {
+    return (f*9/5)+32;
 }

@@ -16,19 +16,23 @@
 
 #pragma once
 
-#include <QObject>
-#include <QString>
+#include <QGuiApplication>
+#include <QQuickView>
 
-class SensorTextObject: public QObject {
-    Q_OBJECT
-    Q_PROPERTY(QString text READ GetText NOTIFY TextChanged)
+#include "TemperatureSensor.h"
+#include "Controller.h"
+#include "HumiditySensor.h"
+
+class DisplayApp {
 public:
-    SensorTextObject(const QString& s = QString());
-    QString GetText() const;
-    void SetText(const QString& text);
-    virtual ~SensorTextObject() = default;
-signals:
-    void TextChanged();
+    DisplayApp(QGuiApplication* qtApp, QQuickView* qtView);
+    void Setup(const QUrl& url);
+    int Run();
+    virtual ~DisplayApp() = default;
 private:
-    QString m_text;
+    TemperatureSensor m_tempSensor;
+    HumiditySensor m_humSensor;
+    Controller m_controller;
+    QGuiApplication* m_qtApp;
+    QQuickView* m_qtView;
 };

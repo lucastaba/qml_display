@@ -24,7 +24,7 @@ Item {
                     Layout.fillWidth: parent
 
                     Text {
-                        text: __sensor1.text
+                        text: __tempSensorC.text
                         color: "white"
                     }
 
@@ -38,7 +38,7 @@ Item {
                     Layout.fillWidth: parent
 
                     Text {
-                        text: __sensor2.text
+                        text: __tempSensorF.text
                         color: "white"
                     }
 
@@ -60,7 +60,7 @@ Item {
                 }
 
                 Text {
-                    text: __sensor3.text
+                    text: __humSensor.text
                     color: "white"
                     font.italic: true
                 }

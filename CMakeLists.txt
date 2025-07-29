@@ -19,6 +19,7 @@ qt_add_executable(appqml_display
     app/Src/HumiditySensor.cpp
     app/Src/SensorTextObject.cpp
     app/Src/GaussianRNG.cpp
+    app/Src/DisplayApp.cpp
     main.cpp
 )
 

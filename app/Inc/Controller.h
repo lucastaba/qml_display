@@ -18,8 +18,11 @@
 
 #include <unordered_map>
 
+#include <QQmlContext>
+
 #include "IObserver.h"
 #include "ISubject.h"
+#include "SensorTextObject.h"
 
 typedef enum {
     SENSOR_TEMPERATURE,
@@ -30,8 +33,17 @@ class Controller: public IObserver {
 public:
     Controller();
     void Subscribe(ISubject* subject, SubjectType type);
+    void SetupUI(QQmlContext* context);
     void Update(ISubject* subject) override;
     ~Controller() = default;
 private:
     std::unordered_map<ISubject*, SubjectType> m_subjects;
+
+    /* could be inside UI object */
+    SensorTextObject m_tempSensorC;
+    SensorTextObject m_tempSensorF;
+    SensorTextObject m_humSensor;
+
+    QString m_Float2QString(float f);
+    float m_Celsius2Fahrenheit(float f);
 };

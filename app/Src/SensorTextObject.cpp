@@ -16,8 +16,8 @@
 
 #include "SensorTextObject.h"
 
-SensorTextObject::SensorTextObject():
-    m_text("") {
+SensorTextObject::SensorTextObject(const QString& s):
+    m_text(s) {
 }
 
 QString SensorTextObject::GetText() const {
