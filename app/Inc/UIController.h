@@ -16,15 +16,9 @@
 
 #pragma once
 
-#include "Sensor.h"
-
-class TemperatureSensor: public Sensor {
+class UIController {
 public:
-    TemperatureSensor(int interval = 2);
-    float GetData(void) override;
-    ~TemperatureSensor() = default;
-private:
-    const float m_mean = 25.0f;
-    const float m_minValue = -40.0f;
-    const float m_maxValue = 150.0f;
+    UIController();
+    void UpdateProperty();
+    virtual ~UIController() = default;
 };

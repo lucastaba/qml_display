@@ -16,15 +16,19 @@
 
 #pragma once
 
-#include "Sensor.h"
+#include <QObject>
+#include <QString>
 
-class TemperatureSensor: public Sensor {
+class SensorTextObject: public QObject {
+    Q_OBJECT
+    Q_PROPERTY(QString text READ GetText NOTIFY TextChanged)
 public:
-    TemperatureSensor(int interval = 2);
-    float GetData(void) override;
-    ~TemperatureSensor() = default;
+    SensorTextObject();
+    QString GetText() const;
+    void SetText(const QString& text);
+    virtual ~SensorTextObject() = default;
+signals:
+    void TextChanged();
 private:
-    const float m_mean = 25.0f;
-    const float m_minValue = -40.0f;
-    const float m_maxValue = 150.0f;
+    QString m_text;
 };
