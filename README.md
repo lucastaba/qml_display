@@ -1,4 +1,5 @@
 ![GitHub License](https://img.shields.io/github/license/lucastaba/qml_display)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white)
 
 # Qt QML Display
 A Qt QML temperature and humidity display. The display shows the temperature in ***Celsius*** and ***Fahrenheit***, and the humidity level as percentage. The temperature and humidity are saved into local storage. The data is optionally sent to a remote server (depends on server availability).
