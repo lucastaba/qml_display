@@ -16,9 +16,7 @@
 
 #pragma once
 
-#include <unordered_map>
 #include <string>
-#include <any>
 
 #include <QQmlContext>
 
@@ -26,6 +24,7 @@
 #include "ISubject.h"
 #include "SensorTextObject.h"
 #include "IDataBaseHandler.h"
+#include "DataBaseData.h"
 
 typedef enum {
     SENSOR_TEMPERATURE,
@@ -67,5 +66,6 @@ private:
 
     void m_DataBaseConnect(const std::string& path);
     void m_DataBaseDisconnect();
-    void m_DataBaseInsert(const std::any& item);
+    void m_DataBaseInsert(const DataBaseData& data);
+    void m_SetDataBaseData(DataBaseData& dbData, const SubjectType type, const float data);
 };

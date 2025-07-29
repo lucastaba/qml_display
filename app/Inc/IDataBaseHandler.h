@@ -17,12 +17,13 @@
 #pragma once
 
 #include <string>
-#include <any>
+
+#include "DataBaseData.h"
 
 class IDataBaseHandler {
 public:
-    virtual void Connect(std::string& path) = 0;
+    virtual void Connect(const std::string& path) = 0;
     virtual void Disconnect() = 0;
-    virtual void InsertItem(const std::any& item) = 0;
+    virtual void InsertItem(const DataBaseData& data) = 0;
     virtual ~IDataBaseHandler() = default;
 };

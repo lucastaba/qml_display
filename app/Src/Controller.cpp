@@ -57,9 +57,12 @@ void Controller::SetDataBase(IDataBaseHandler* db, const std::string& path) {
 
 void Controller::Update(ISubject* subject) {
     float data;
+    DataBaseData dbdata;
+    bool shouldUpdateDb = false;
     switch (m_subjects.at(subject)) {
         case SENSOR_TEMPERATURE:
             data = static_cast<TemperatureSensor*>(subject)->ReadData();
+            shouldUpdateDb = true;
             m_tempSensorC.SetText(m_Float2QString(data));
             m_tempSensorF.SetText(m_Float2QString(m_Celsius2Fahrenheit(data)));
             if (m_IsTempAbnormal(data)) {
@@ -73,6 +76,7 @@ void Controller::Update(ISubject* subject) {
         case SENSOR_HUMIDITY:
             data = static_cast<HumiditySensor*>(subject)->ReadData();
             m_humSensor.SetText(m_Float2QString(data));
+            shouldUpdateDb = true;
             if (m_IsHumidityAbonormal(data)) {
                 m_humSensor.SetColorFault();
             } else {
@@ -80,6 +84,11 @@ void Controller::Update(ISubject* subject) {
             }
         default:
             break;
+    }
+
+    if (shouldUpdateDb) {
+        m_SetDataBaseData(dbdata, m_subjects.at(subject), data);
+        m_DataBaseInsert(dbdata);
     }
 }
 
@@ -104,14 +113,27 @@ void Controller::m_DataBaseConnect(const std::string& path) {
     if (nullptr == m_db) {
         return;
     }
+    m_db->Connect(path);
 }
 void Controller::m_DataBaseDisconnect() {
     if (nullptr == m_db) {
         return;
     }
+    m_db->Disconnect();
 }
-void Controller::m_DataBaseInsert(const std::any& item) {
+void Controller::m_DataBaseInsert(const DataBaseData& data) {
     if (nullptr == m_db) {
         return;
+    }
+    m_db->InsertItem(data);
+}
+
+void Controller::m_SetDataBaseData(DataBaseData& dbData, const SubjectType type, const float data) {
+    float d = data;
+    dbData.type = type;
+    dbData.len = sizeof(data);
+    dbData.value.reserve(dbData.len);
+    for (int i = 0; i < dbData.len; ++i) {
+        dbData.value.push_back(*(reinterpret_cast<uint8_t*>(&d) + i));
     }
 }
