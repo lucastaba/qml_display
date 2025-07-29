@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Layouts
 
 Item {
-    width: 640
-    height: 480
+    width: 320
+    height: 240
     visible: true
 
     Rectangle {

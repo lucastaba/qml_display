@@ -63,6 +63,18 @@ The `class ISensor` is the interface of all concrete sensors. It should provide 
 
 *Fig. 3- The `class ISensor` and its children.*
 
+## System Images and GIF
+Screen captures showing how the application works.
+
+![Display capture 1](./doc/img/display_capture_1.png)
+![Display capture 2](./doc/img/display_capture_2.png)
+
+*Img. 1- Capture shows application layout.*
+
+![Display GIF](./doc/img/display_record.gif)
+
+*VD 1- GIF shows values changing in real time and demonstrates the alarm operation.*
+
 ## Build Project
 Requirement:
 - Any C++ compiler with C++17 support.
@@ -80,3 +92,6 @@ Run command:
 ```
 ./build/appqml_display
 ```
+
+## Known Issues
+- Main.qml has null type on C++ exported objects during destruction time
