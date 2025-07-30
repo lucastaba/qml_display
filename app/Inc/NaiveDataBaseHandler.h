@@ -23,11 +23,11 @@ public:
     NaiveDataBaseHandler();
     void Connect(const std::string& path) override;
     void Disconnect() override;
-    void InsertItem(const DataBaseData& data) override;
+    void InsertItem(DataBaseData& data) override;
     virtual ~NaiveDataBaseHandler() = default;
 private:
     std::string m_path;
     std::ofstream m_of;
 
-    void m_CopyDataToVector(std::vector<uint8_t>& vec, const uint8_t* data, const unsigned int len);
+    // void m_CopyDataToVector(std::vector<uint8_t>& vec, const uint8_t* data, const unsigned int len);
 };

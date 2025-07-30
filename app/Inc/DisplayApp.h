@@ -23,6 +23,7 @@
 #include "Controller.h"
 #include "HumiditySensor.h"
 #include "NaiveDataBaseHandler.h"
+#include "SocketClient.h"
 
 class DisplayApp {
 public:
@@ -35,6 +36,7 @@ private:
     HumiditySensor m_humSensor;
     Controller m_controller;
     NaiveDataBaseHandler m_db;
+    SocketClient m_client;
     QGuiApplication* m_qtApp;
     QQuickView* m_qtView;
 

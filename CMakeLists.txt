@@ -21,6 +21,7 @@ qt_add_executable(appqml_display
     app/Src/GaussianRNG.cpp
     app/Src/DisplayApp.cpp
     app/Src/NaiveDataBaseHandler.cpp
+    app/Src/SocketClient.cpp
     main.cpp
 )
 

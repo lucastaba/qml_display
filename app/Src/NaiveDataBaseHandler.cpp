@@ -15,7 +15,6 @@
 */
 
 #include <cstring>
-#include <iterator>
 #include <vector>
 
 #include "NaiveDataBaseHandler.h"
@@ -35,21 +34,9 @@ void NaiveDataBaseHandler::Disconnect() {
     (void)m_of.close();
 }
 
-void NaiveDataBaseHandler::InsertItem(const DataBaseData& data) {
-    std::vector<uint8_t> binData;
-    unsigned int len = data.len + sizeof(data.type) + data.value.size();
-    binData.reserve(len);
-    m_CopyDataToVector(binData, reinterpret_cast<const uint8_t*>(&data.type), sizeof(data.type));
-    m_CopyDataToVector(binData, reinterpret_cast<const uint8_t*>(&data.len), sizeof(data.len));
-    std::copy(data.value.begin(), data.value.end(), std::back_inserter(binData));
-
+void NaiveDataBaseHandler::InsertItem(DataBaseData& data) {
+    auto binData = data.SerializeData();
     m_of.open(m_path, std::ofstream::binary | std::ofstream::app);
     m_of.write(reinterpret_cast<char*>(binData.data()), binData.size());
     m_of.close();
-}
-
-void NaiveDataBaseHandler::m_CopyDataToVector(std::vector<uint8_t>& vec, const uint8_t* data, const unsigned int len) {
-    for (int i = 0; i < len; ++i) {
-        vec.push_back(*(data + i));
-    }
 }

@@ -16,14 +16,35 @@
 
 #pragma once
 
-#include <string>
+#include <thread>
+#include <memory>
+#include <queue>
+#include <mutex>
+#include <condition_variable>
+
+#include <QObject>
 
 #include "DataBaseData.h"
 
-class IDataBaseHandler {
+class SocketClient: public QObject {
+    Q_OBJECT
 public:
-    virtual void Connect(const std::string& path) = 0;
-    virtual void Disconnect() = 0;
-    virtual void InsertItem(DataBaseData& data) = 0;
-    virtual ~IDataBaseHandler() = default;
+    SocketClient();
+    void Connect(const QString& serverAddr, const int serverPort);
+    void Disconnect();
+    void WriteData(const DataBaseData& data);
+    void Reconnect();
+    virtual ~SocketClient();
+public slots:
+    void m_OnConnected();
+private:
+    std::unique_ptr<std::thread> m_thread;
+    std::queue<DataBaseData> m_queue;
+    std::mutex m_mutex;
+    std::condition_variable m_cv;
+    QString m_addr;
+    int m_port;
+    bool m_run;
+
+    void m_Run();
 };

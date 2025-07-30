@@ -23,4 +23,20 @@ struct DataBaseData {
     unsigned int type;
     unsigned int len;
     std::vector<uint8_t> value;
+
+    std::vector<uint8_t> SerializeData() {
+        std::vector<uint8_t> vec;
+        unsigned int length = sizeof(len) + sizeof(type) + value.size();
+        vec.reserve(length);
+        CopyDataToVector(vec, reinterpret_cast<const uint8_t*>(&type), sizeof(type));
+        CopyDataToVector(vec, reinterpret_cast<const uint8_t*>(&len), sizeof(len));
+        std::copy(value.begin(), value.end(), std::back_inserter(vec));
+        return vec;
+    }
+
+    void CopyDataToVector(std::vector<uint8_t>& vec, const uint8_t* data, const unsigned int len) {
+        for (int i = 0; i < len; ++i) {
+            vec.push_back(*(data + i));
+        }
+    }
 };

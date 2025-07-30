@@ -76,10 +76,19 @@ Screen captures showing how the application works.
 
 *VD 1- GIF shows values changing in real time and demonstrates the alarm operation.*
 
-## Build Project
+![Display Connection GIF](./doc/img/display_record2.gif)
+
+*VD 2- GIF shows values being transmitted to localhost:8080. The server data is saved into data.bin.*
+
+![Data](./doc/img/data_capture_1.png)
+
+*Img. 2- Captures the data received from the display application shown on VD 2.*
+
+## Build & Run Project
 Requirement:
 - Any C++ compiler with C++17 support.
 - cmake
+- Netcat
 
 Build command using GCC:
 ```
@@ -92,6 +101,11 @@ cmake --build ./build/
 Run command:
 ```
 ./build/appqml_display
+```
+
+Run localhost server on port 8080:
+```
+sudo nc -l 8080 | tee data.bin
 ```
 
 ## Known Issues

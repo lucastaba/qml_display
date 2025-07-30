@@ -55,6 +55,11 @@ void Controller::SetDataBase(IDataBaseHandler* db, const std::string& path) {
     m_DataBaseConnect(path);
 }
 
+void Controller::SetClient(SocketClient* client) {
+    m_client = client;
+    m_ClientConnect();
+}
+
 void Controller::Update(ISubject* subject) {
     float data;
     DataBaseData dbdata;
@@ -89,6 +94,7 @@ void Controller::Update(ISubject* subject) {
     if (shouldUpdateDb) {
         m_SetDataBaseData(dbdata, m_subjects.at(subject), data);
         m_DataBaseInsert(dbdata);
+        m_ClientWrite(dbdata);
     }
 }
 
@@ -121,7 +127,7 @@ void Controller::m_DataBaseDisconnect() {
     }
     m_db->Disconnect();
 }
-void Controller::m_DataBaseInsert(const DataBaseData& data) {
+void Controller::m_DataBaseInsert(DataBaseData& data) {
     if (nullptr == m_db) {
         return;
     }
@@ -136,4 +142,25 @@ void Controller::m_SetDataBaseData(DataBaseData& dbData, const SubjectType type,
     for (int i = 0; i < dbData.len; ++i) {
         dbData.value.push_back(*(reinterpret_cast<uint8_t*>(&d) + i));
     }
+}
+
+void Controller::m_ClientConnect() {
+    if (nullptr == m_client) {
+        return;
+    }
+    m_client->Connect("127.0.0.1", 8080);
+}
+
+void Controller::m_ClientDisconnect() {
+    if (nullptr == m_client) {
+        return;
+    }
+    m_client->Disconnect();
+}
+
+void Controller::m_ClientWrite(DataBaseData& dbData) {
+    if (nullptr == m_client) {
+        return;
+    }
+    m_client->WriteData(dbData);
 }

@@ -25,6 +25,7 @@
 #include "SensorTextObject.h"
 #include "IDataBaseHandler.h"
 #include "DataBaseData.h"
+#include "SocketClient.h"
 
 typedef enum {
     SENSOR_TEMPERATURE,
@@ -39,6 +40,7 @@ public:
     void SetupTempAlarm(float coldTemp = 10.0f, float hotTemp= 40.0f);
     void SetupHumAlarm(float lowHum = 40.0, float highHum = 87.0);
     void SetDataBase(IDataBaseHandler* db, const std::string& path);
+    void SetClient(SocketClient* client);
     void Update(ISubject* subject) override;
     ~Controller() = default;
 private:
@@ -66,6 +68,13 @@ private:
 
     void m_DataBaseConnect(const std::string& path);
     void m_DataBaseDisconnect();
-    void m_DataBaseInsert(const DataBaseData& data);
+    void m_DataBaseInsert(DataBaseData& data);
     void m_SetDataBaseData(DataBaseData& dbData, const SubjectType type, const float data);
+
+    /* TCP socket */
+    SocketClient* m_client;
+
+    void m_ClientConnect();
+    void m_ClientDisconnect();
+    void m_ClientWrite(DataBaseData& dbData);
 };
